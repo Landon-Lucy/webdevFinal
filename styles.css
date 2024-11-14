@@ -1,0 +1,185 @@
+:root {
+  --navbarBackground: black;
+  --navButtonBackground: white;
+  --sideBarBackground: rgb(92, 92, 183);
+  --mainbackground: gray;
+  --lighterMainBackground: rgb(155, 155, 155);
+}
+
+body {
+  margin: 0em;
+}
+
+#fullPageContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mainbackground);
+}
+
+#navbar {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  justify-content: space-around;
+  min-height: 2.5em;
+  background-color: var(--navbarBackground);
+}
+
+#logoBar {
+  height: 50%;
+}
+
+#logo {
+  height: 100%;
+}
+
+#navLinkList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 90%;
+  list-style: none;
+  height: 45%;
+  margin: 0;
+}
+
+#navLinkList li {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--navButtonBackground);
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-bottom: 0.1em;
+}
+
+#navLinkList li a {
+  text-decoration: none;
+  align-self: center;
+}
+
+#scrollableContainer {
+  overflow-y: auto;
+  height: 90vh;
+}
+
+#centerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#sideBarLeft {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--sideBarBackground);
+  width: 15%;
+}
+
+#leftLinkList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  list-style: none;
+  height: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+#leftLinkList li {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--navButtonBackground);
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  align-self: center;
+}
+
+#leftLinkList li a {
+  display: flex;
+  text-decoration: none;
+  align-self: center;
+}
+
+#comicContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mainbackground);
+  width: 70%;
+}
+
+#comicNavigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+  width: 50%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  background-color: var(--lighterMainBackground);
+}
+
+#comicPage {
+  max-width: 85%;
+  max-height: 85vh;
+  min-height: 20em;
+  align-self: center;
+}
+
+#authorNote {
+  width: 70%;
+  align-self: center;
+  background-color: var(--lighterMainBackground);
+}
+
+#sideBarRight {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  background-color: var(--sideBarBackground);
+}
+
+#rightLinkList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#rightLinkList li {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background-color: var(--navButtonBackground);
+}
+
+#rightLinkList li a {
+  text-decoration: none;
+  align-self: center;
+}
+
+#commentsContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  background-color: var(--lighterMainBackground);
+}
+
+#commentEntryForm {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-self: center;
+}
+
+#commentEntryForm label {
+  margin-bottom: 1em;
+}
+
+#commentTextInput {
+  margin-bottom: 0.5em;
+}
