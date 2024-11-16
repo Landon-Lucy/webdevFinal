@@ -266,7 +266,13 @@ const SetupImageForm = () => {
     e.preventDefault();
 
     const file = fileUploadElement.files[0];
-
+    
+    const newFileUploadElement = document.createElement("input");
+    newFileUploadElement.type = "file";
+    newFileUploadElement.id = "fileUpload";
+    formElement.replaceChildren(newFileUploadElement);
+    formElement.appendChild(fileSubmitElement);
+    
     async function getBase64(file) {
       return new Promise((resolve, reject) => {
         var reader = new FileReader();
@@ -310,10 +316,10 @@ async function renderImageByPage(pageNumer) {
       String(window.location.href.split("=")[1])
     );
     comicPageElement.src = image;
-    if (comicPageElement.src === undefined)
-    {
-      console.log("dasd");
-    }
+    // if (comicPageElement.src === undefined)
+    // {
+    //   console.log("dasd");
+    // }
   }
 }
 
