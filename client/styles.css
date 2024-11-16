@@ -129,6 +129,8 @@ body {
   width: 70%;
   align-self: center;
   background-color: var(--lighterMainBackground);
+  min-height: 5em;
+  padding: 1em;
 }
 
 #sideBarRight {

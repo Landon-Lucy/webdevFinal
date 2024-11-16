@@ -153,7 +153,7 @@ function renderComicPageSite() {
   lastPageButtonElement.type = "submit";
   lastPageButtonElement.name = "lastPage";
   lastPageButtonElement.id = "lastPage";
-  lastPageButtonElement.value = ">";
+  lastPageButtonElement.value = ">>";
 
   comicNavFormElement.appendChild(lastPageButtonElement);
 
