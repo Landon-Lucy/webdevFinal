@@ -2,6 +2,8 @@ import {
   getSomethingFromAPI,
   storeFileOnApi,
   getBase64FileFromApi,
+  getPages,
+  getPagebyPageNumber,
 } from "./service.js";
 
 function renderComicPageSite() {
@@ -157,14 +159,16 @@ function renderComicPageSite() {
 
   comicNavFormElement.appendChild(lastPageButtonElement);
 
+  SetupPageNavigationListeners();
+
   const comicImageElement = document.createElement("img");
-  comicImageElement.src = "https://imgs.xkcd.com/comics/artifacts_2x.png";
+  // comicImageElement.src = "https://imgs.xkcd.com/comics/artifacts_2x.png";
   comicImageElement.alt = "placeholder";
   comicImageElement.id = "comicPage";
-
   comicContainerElement.appendChild(comicImageElement);
+  renderImageByPage("0");
 
-  const imageFormElement = SetupForm();
+  const imageFormElement = SetupImageForm();
 
   comicContainerElement.appendChild(imageFormElement);
 
@@ -245,8 +249,9 @@ function renderComicPageSite() {
   commentFormElement.appendChild(commentSubmitElement);
 }
 
-const SetupForm = () => {
+const SetupImageForm = () => {
   const formElement = document.createElement("form");
+  formElement.id = "imageForm";
 
   const fileUploadElement = document.createElement("input");
   fileUploadElement.type = "file";
@@ -261,7 +266,6 @@ const SetupForm = () => {
     e.preventDefault();
 
     const file = fileUploadElement.files[0];
-    console.log(file);
 
     async function getBase64(file) {
       return new Promise((resolve, reject) => {
@@ -277,16 +281,115 @@ const SetupForm = () => {
       });
     }
 
-    const base64File = await getBase64(file);
-    await storeFileOnApi(base64File);
+    let nextPage = "";
+    const pagesArray = await getPages();
+    try {
+      nextPage = pagesArray.length;
+    } catch {
+      nextPage = 1;
+    }
 
-    const stringFromApi = await getBase64FileFromApi();
-    const comicPageElement = document.getElementById("comicPage");
-    comicPageElement.src = stringFromApi;
+    console.log(pagesArray);
+    console.log(nextPage);
+
+    const base64File = await getBase64(file);
+    await storeFileOnApi(base64File, String(nextPage));
+
+    // const stringFromApi = await getBase64FileFromApi();
   });
   return formElement;
 };
 
-renderComicPageSite();
+async function renderImageByPage(pageNumer) {
+  const comicPageElement = document.getElementById("comicPage");
+  if (window.location.href.split("=")[1] === undefined) {
+    const image = await getPagebyPageNumber("0");
+    comicPageElement.src = image;
+  } else {
+    const image = await getPagebyPageNumber(
+      String(window.location.href.split("=")[1])
+    );
+    comicPageElement.src = image;
+    if (comicPageElement.src === undefined)
+    {
+      console.log("dasd");
+    }
+  }
+}
 
-console.log(await getSomethingFromAPI());
+function SetupPageNavigationListeners() {
+  const navigationFormElement = document.getElementById("comicNavigation");
+  const firstPageButton = document.getElementById("firstPage");
+  const previousPageButton = document.getElementById("previousPage");
+  const lastPageButton = document.getElementById("lastPage");
+  const nextPageButton = document.getElementById("nextPage");
+
+  navigationFormElement.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    console.log(e);
+
+    const baseUrl = "http://127.0.0.1:5500/";
+
+    let lastPage = "";
+    let previousPage = "";
+    let nextPage = "";
+
+    const pagesArray = await getPages();
+
+    try {
+      lastPage = pagesArray.length - 1;
+    } catch {
+      lastPage = 0;
+    }
+
+    try {
+      previousPage = window.location.href.split("=")[1] - 1;
+      if (previousPage < 0) previousPage = 0;
+    } catch {
+      previousPage = 0;
+    }
+
+    try {
+      nextPage = window.location.href.split("=")[1] - -1;
+      if (nextPage > pagesArray.length - 1) nextPage = pagesArray.length - 1;
+    } catch {
+      nextPage = 0;
+    }
+
+    console.log(e.submitter.id);
+
+    if (e.submitter.id === "firstPage") {
+      if (window.location.href.split("=")[1] === undefined) {
+        window.location.href = baseUrl + "?page=0";
+      } else {
+        window.location.href = baseUrl + "?page=0";
+      }
+    }
+
+    if (e.submitter.id === "previousPage") {
+      if (window.location.href.split("=")[1] === undefined) {
+        window.location.href = baseUrl + "?page=0";
+      } else {
+        window.location.href = baseUrl + "?page=" + String(previousPage);
+      }
+    }
+
+    if (e.submitter.id === "nextPage") {
+      if (window.location.href.split("=")[1] === undefined) {
+        window.location.href = baseUrl + "?page=1";
+      } else {
+        window.location.href = baseUrl + "?page=" + String(nextPage);
+      }
+    }
+
+    if (e.submitter.id === "lastPage") {
+      if (window.location.href.split("=")[1] === undefined) {
+        window.location.href = baseUrl + "?page=" + (pagesArray.length - 1);
+      } else {
+        window.location.href = baseUrl + "?page=" + (pagesArray.length - 1);
+      }
+    }
+  });
+}
+
+renderComicPageSite();
