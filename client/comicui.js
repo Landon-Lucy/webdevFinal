@@ -1,3 +1,9 @@
+import {
+  getSomethingFromAPI,
+  storeFileOnApi,
+  getBase64FileFromApi,
+} from "./service.js";
+
 function renderComicPageSite() {
   const bodyElement = document.getElementById("body");
 
@@ -158,6 +164,10 @@ function renderComicPageSite() {
 
   comicContainerElement.appendChild(comicImageElement);
 
+  const imageFormElement = SetupForm();
+
+  comicContainerElement.appendChild(imageFormElement);
+
   const authorNoteElement = document.createElement("article");
   authorNoteElement.id = "authorNote";
   authorNoteElement.textContent = "Author note section";
@@ -225,7 +235,7 @@ function renderComicPageSite() {
   const commentInputElement = document.createElement("input");
   commentInputElement.type = "text";
   commentInputElement.id = "commentTextInput";
-  commentInputElement.value = "Write a comment here!";
+  commentInputElement.placeholder = "Write a comment here!";
 
   commentFormElement.appendChild(commentInputElement);
 
@@ -235,4 +245,48 @@ function renderComicPageSite() {
   commentFormElement.appendChild(commentSubmitElement);
 }
 
-renderComicPageSite()
+const SetupForm = () => {
+  const formElement = document.createElement("form");
+
+  const fileUploadElement = document.createElement("input");
+  fileUploadElement.type = "file";
+  fileUploadElement.id = "fileUpload";
+  formElement.appendChild(fileUploadElement);
+
+  const fileSubmitElement = document.createElement("input");
+  fileSubmitElement.type = "submit";
+  formElement.appendChild(fileSubmitElement);
+
+  formElement.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const file = fileUploadElement.files[0];
+    console.log(file);
+
+    async function getBase64(file) {
+      return new Promise((resolve, reject) => {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = async function () {
+          resolve(reader.result);
+        };
+        reader.onerror = function (error) {
+          console.log("Error: ", error);
+          reject(error);
+        };
+      });
+    }
+
+    const base64File = await getBase64(file);
+    await storeFileOnApi(base64File);
+
+    const stringFromApi = await getBase64FileFromApi();
+    const comicPageElement = document.getElementById("comicPage");
+    comicPageElement.src = stringFromApi;
+  });
+  return formElement;
+};
+
+renderComicPageSite();
+
+console.log(await getSomethingFromAPI());
