@@ -39,3 +39,45 @@ export const getBase64FileFromApi = async () => {
 
   return await response.text();
 };
+
+//Comments
+
+export async function postComment(
+  authorString,
+  contentString,
+  pageNumber,
+  idString
+) {
+  await fetch(baseUrl + "pages/"  + pageNumber + "/comments", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      author: authorString,
+      text: contentString,
+      id: idString,
+    }),
+  });
+}
+
+export async function getComments(pageNumber) {
+  const comments = await fetch(baseUrl + "pages/" + pageNumber + "/comments");
+  const commentsData = await comments.json();
+  return commentsData;
+}
+
+// export async function editComment(
+//   authorString,
+//   contentString,
+//   pageNumber,
+//   commentId
+// ) {
+//   await fetch(baseUrl + pageNumber + `/comments/` + commentId, {
+//     method: "PUT",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       author: authorString,
+//       text: contentString,
+//       id: commentId,
+//     }),
+//   });
+// }
