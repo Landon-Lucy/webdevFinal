@@ -253,10 +253,10 @@ const SetupImageForm = () => {
   const formElement = document.createElement("form");
   formElement.id = "imageForm";
 
-  const fileUploadElement = document.createElement("input");
-  fileUploadElement.type = "file";
-  fileUploadElement.id = "fileUpload";
-  formElement.appendChild(fileUploadElement);
+  const firstFileUploadElement = document.createElement("input");
+  firstFileUploadElement.type = "file";
+  firstFileUploadElement.id = "fileUpload";
+  formElement.appendChild(firstFileUploadElement);
 
   const fileSubmitElement = document.createElement("input");
   fileSubmitElement.type = "submit";
@@ -265,7 +265,10 @@ const SetupImageForm = () => {
   formElement.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const fileUploadElement = document.getElementById("fileUpload");
+
     const file = fileUploadElement.files[0];
+    fileUploadElement.id = "";
     
     const newFileUploadElement = document.createElement("input");
     newFileUploadElement.type = "file";
@@ -301,6 +304,7 @@ const SetupImageForm = () => {
     const base64File = await getBase64(file);
     await storeFileOnApi(base64File, String(nextPage));
 
+    file = undefined;
     // const stringFromApi = await getBase64FileFromApi();
   });
   return formElement;
