@@ -250,6 +250,11 @@ function renderComicPageSite() {
   rightListLink4Element.href = "";
   rightListItem4Element.appendChild(rightListLink4Element);
 
+  const commentFormsContainerElement = document.createElement("div");
+  commentFormsContainerElement.id = "commentFormsContainer";
+
+  scrollContainerElement.appendChild(commentFormsContainerElement);
+
   const commentContainerElement = document.createElement("article");
   commentContainerElement.id = "commentsContainer";
 
@@ -258,7 +263,7 @@ function renderComicPageSite() {
   const commentFormElement = document.createElement("form");
   commentFormElement.id = "commentEntryForm";
 
-  commentContainerElement.appendChild(commentFormElement);
+  commentFormsContainerElement.appendChild(commentFormElement);
 
   // const commentAuthorInputLabelElement = document.createElement("label");
   // commentAuthorInputLabelElement.setAttribute("for", "commentAuthorInput");
@@ -292,6 +297,8 @@ function renderComicPageSite() {
   commentFormElement.appendChild(commentSubmitElement);
 
   addCommentFormEventListeners();
+
+  createCommentFilterForm();
 
   renderComments();
 }
@@ -508,7 +515,8 @@ async function renderComments() {
   const commentContainerElement = document.getElementById("commentsContainer");
   commentContainerElement.replaceChildren();
 
-  createCommentForm();
+  // createCommentForm();
+  // createCommentFilterForm();
 
   let pageNumber = window.location.href.split("=")[1];
 
@@ -586,6 +594,93 @@ function createCommentForm() {
   commentFormElement.appendChild(commentSubmitElement);
 
   addCommentFormEventListeners();
+}
+
+function createCommentFilterForm() {
+  const commentFormsContainerElement = document.getElementById(
+    "commentFormsContainer"
+  );
+
+  const commentFilterFormElement = document.createElement("form");
+  commentFilterFormElement.id = "commentFilterForm";
+
+  commentFormsContainerElement.appendChild(commentFilterFormElement);
+
+  const commentFilterElement = document.createElement("input");
+  commentFilterElement.id = "commentFilter";
+
+  commentFilterFormElement.appendChild(commentFilterElement);
+
+  commentFilterFormElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
+
+  commentFilterFormElement.addEventListener("input", async () => {
+    let pageNumber = "";
+    if (window.location.href.split("=")[1] === undefined) {
+      pageNumber = "0";
+    } else {
+      pageNumber = String(window.location.href.split("=")[1]);
+    }
+    const commentsArray = await getComments(pageNumber);
+
+    const filteredComments = commentsArray.map((comment) => {
+      if (
+        String(comment.author)
+          .toLowerCase()
+          .includes(String(commentFilterElement.value).toLowerCase()) ||
+        String(comment.text)
+          .toLowerCase()
+          .includes(String(commentFilterElement.value).toLowerCase())
+      ) {
+        return comment;
+      }
+    });
+
+    renderFilteredComments(filteredComments);
+  });
+}
+
+function renderFilteredComments(filteredComments) {
+  const commentContainerElement = document.getElementById("commentsContainer");
+  commentContainerElement.replaceChildren();
+
+  let pageNumber = window.location.href.split("=")[1];
+
+  const commentsArray = filteredComments;
+
+  commentsArray.forEach((comment) => {
+    if (comment != undefined) {
+      const commentElement = document.createElement("div");
+
+      const commentAuthorElement = document.createElement("p");
+      commentAuthorElement.textContent = "By: " + comment.author;
+      commentAuthorElement.classList.add("commentAuthor");
+
+      const commentContentElement = document.createElement("p");
+      commentContentElement.textContent = comment.text;
+      commentContentElement.classList.add("commentContent");
+
+      commentElement.appendChild(commentAuthorElement);
+      commentElement.appendChild(commentContentElement);
+
+      commentElement.classList.add("comment");
+
+      const deleteButtonElement = document.createElement("button");
+      deleteButtonElement.id = "deleteButton";
+      deleteButtonElement.textContent = "Delete Comment";
+
+      deleteButtonElement.addEventListener("click", async () => {
+        await deleteComment(pageNumber, comment.id);
+
+        renderComments();
+      });
+
+      commentElement.appendChild(deleteButtonElement);
+
+      commentContainerElement.appendChild(commentElement);
+    }
+  });
 }
 
 function addSignInFormEventListeners() {
