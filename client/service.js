@@ -48,7 +48,7 @@ export async function postComment(
   pageNumber,
   idString
 ) {
-  await fetch(baseUrl + "pages/"  + pageNumber + "/comments", {
+  await fetch(baseUrl + "pages/" + pageNumber + "/comments", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -63,6 +63,19 @@ export async function getComments(pageNumber) {
   const comments = await fetch(baseUrl + "pages/" + pageNumber + "/comments");
   const commentsData = await comments.json();
   return commentsData;
+}
+
+export async function deleteComment(pageNumber, commentId) {
+  const comments = await fetch(
+    baseUrl + "pages/" + pageNumber + "/comments/" + commentId,
+    {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: commentId,
+      }),
+    }
+  );
 }
 
 // export async function editComment(

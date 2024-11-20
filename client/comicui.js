@@ -6,6 +6,7 @@ import {
   getPagebyPageNumber,
   postComment,
   getComments,
+  deleteComment,
 } from "./service.js";
 
 let username = "";
@@ -528,6 +529,18 @@ async function renderComments() {
     commentElement.appendChild(commentContentElement);
 
     commentElement.classList.add("comment");
+
+    const deleteButtonElement = document.createElement("button");
+    deleteButtonElement.id = "deleteButton";
+    deleteButtonElement.textContent = "Delete Comment";
+
+    deleteButtonElement.addEventListener("click", async () => {
+      await deleteComment(pageNumber, comment.id);
+
+      renderComments();
+    });
+
+    commentElement.appendChild(deleteButtonElement);
 
     commentContainerElement.appendChild(commentElement);
   });

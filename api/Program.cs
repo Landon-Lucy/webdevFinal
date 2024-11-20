@@ -109,11 +109,11 @@ app.MapPut("/pages/{pageNumber}/comments/{commentId}", async (ulong pageNumber, 
 
 app.MapDelete("/pages/{pageNumber}/comments/{commentId}", (ulong pageNumber, ulong commentId) =>
 {
-    var commentFile = Path.Combine(storageRoot, pageNumber.ToString(), "comments", $"{commentId}.json");
-    if (!File.Exists(commentFile))
-        throw new Exception("Comment not found.");
+  var commentFile = Path.Combine(storageRoot, pageNumber.ToString(), "comments", $"{commentId}.json");
+  if (!File.Exists(commentFile))
+    throw new Exception("Comment not found.");
 
-    File.Delete(commentFile);
+  File.Delete(commentFile);
 });
 
 app.Run();
