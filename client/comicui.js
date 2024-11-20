@@ -8,6 +8,8 @@ import {
   getComments,
 } from "./service.js";
 
+let username = "";
+
 function renderComicPageSite() {
   const bodyElement = document.getElementById("body");
 
@@ -82,42 +84,67 @@ function renderComicPageSite() {
 
   centerContainerElement.appendChild(leftSideElement);
 
-  const leftListElement = document.createElement("ul");
-  leftListElement.id = "leftLinkList";
+  const signInFormElement = document.createElement("form");
+  signInFormElement.id = "signInForm";
 
-  leftSideElement.appendChild(leftListElement);
+  leftSideElement.appendChild(signInFormElement);
 
-  const leftListItem1Element = document.createElement("li");
-  leftListElement.appendChild(leftListItem1Element);
+  const usernameInputElement = document.createElement("input");
+  usernameInputElement.id = "usernameInput";
 
-  const leftListLink1Element = document.createElement("a");
-  leftListLink1Element.textContent = "1";
-  leftListLink1Element.href = "";
-  leftListItem1Element.appendChild(leftListLink1Element);
+  signInFormElement.appendChild(usernameInputElement);
 
-  const leftListItem2Element = document.createElement("li");
-  leftListElement.appendChild(leftListItem2Element);
+  const signInSubmitElement = document.createElement("input");
+  signInSubmitElement.type = "submit";
 
-  const leftListLink2Element = document.createElement("a");
-  leftListLink2Element.textContent = "2";
-  leftListLink2Element.href = "";
-  leftListItem2Element.appendChild(leftListLink2Element);
+  signInFormElement.appendChild(signInSubmitElement);
 
-  const leftListItem3Element = document.createElement("li");
-  leftListElement.appendChild(leftListItem3Element);
+  const currentUserDisplayElement = document.createElement("article");
+  currentUserDisplayElement.id = "currentUserDisplay";
+  currentUserDisplayElement.textContent =
+    "You're signed in as: " + username + "!";
+  currentUserDisplayElement.setAttribute("hidden", "hidden");
 
-  const leftListLink3Element = document.createElement("a");
-  leftListLink3Element.textContent = "3";
-  leftListLink3Element.href = "";
-  leftListItem3Element.appendChild(leftListLink3Element);
+  leftSideElement.appendChild(currentUserDisplayElement);
 
-  const leftListItem4Element = document.createElement("li");
-  leftListElement.appendChild(leftListItem4Element);
+  addSignInFormEventListeners();
 
-  const leftListLink4Element = document.createElement("a");
-  leftListLink4Element.textContent = "4";
-  leftListLink4Element.href = "";
-  leftListItem4Element.appendChild(leftListLink4Element);
+  // const leftListElement = document.createElement("ul");
+  // leftListElement.id = "leftLinkList";
+
+  // leftSideElement.appendChild(leftListElement);
+
+  // const leftListItem1Element = document.createElement("li");
+  // leftListElement.appendChild(leftListItem1Element);
+
+  // const leftListLink1Element = document.createElement("a");
+  // leftListLink1Element.textContent = "1";
+  // leftListLink1Element.href = "";
+  // leftListItem1Element.appendChild(leftListLink1Element);
+
+  // const leftListItem2Element = document.createElement("li");
+  // leftListElement.appendChild(leftListItem2Element);
+
+  // const leftListLink2Element = document.createElement("a");
+  // leftListLink2Element.textContent = "2";
+  // leftListLink2Element.href = "";
+  // leftListItem2Element.appendChild(leftListLink2Element);
+
+  // const leftListItem3Element = document.createElement("li");
+  // leftListElement.appendChild(leftListItem3Element);
+
+  // const leftListLink3Element = document.createElement("a");
+  // leftListLink3Element.textContent = "3";
+  // leftListLink3Element.href = "";
+  // leftListItem3Element.appendChild(leftListLink3Element);
+
+  // const leftListItem4Element = document.createElement("li");
+  // leftListElement.appendChild(leftListItem4Element);
+
+  // const leftListLink4Element = document.createElement("a");
+  // leftListLink4Element.textContent = "4";
+  // leftListLink4Element.href = "";
+  // leftListItem4Element.appendChild(leftListLink4Element);
 
   const comicContainerElement = document.createElement("section");
   comicContainerElement.id = "comicContainer";
@@ -232,18 +259,18 @@ function renderComicPageSite() {
 
   commentContainerElement.appendChild(commentFormElement);
 
-  const commentAuthorInputLabelElement = document.createElement("label");
-  commentAuthorInputLabelElement.setAttribute("for", "commentAuthorInput");
-  commentAuthorInputLabelElement.textContent = "Username: ";
+  // const commentAuthorInputLabelElement = document.createElement("label");
+  // commentAuthorInputLabelElement.setAttribute("for", "commentAuthorInput");
+  // commentAuthorInputLabelElement.textContent = "Username: ";
 
-  commentFormElement.appendChild(commentAuthorInputLabelElement);
+  // commentFormElement.appendChild(commentAuthorInputLabelElement);
 
-  const commentAuthorInputElement = document.createElement("input");
-  commentAuthorInputElement.type = "text";
-  commentAuthorInputElement.id = "commentAuthorInput";
-  commentAuthorInputElement.placeholder = "Username";
+  // const commentAuthorInputElement = document.createElement("input");
+  // commentAuthorInputElement.type = "text";
+  // commentAuthorInputElement.id = "commentAuthorInput";
+  // commentAuthorInputElement.placeholder = "Username";
 
-  commentFormElement.appendChild(commentAuthorInputElement);
+  // commentFormElement.appendChild(commentAuthorInputElement);
 
   const commentContentInputLabelElement = document.createElement("label");
   commentContentInputLabelElement.setAttribute("for", "commentTextInput");
@@ -424,8 +451,8 @@ function SetupPageNavigationListeners() {
 function addCommentFormEventListeners() {
   const commentFormElement = document.getElementById("commentEntryForm");
 
-  const commentAuthorInputElement =
-    document.getElementById("commentAuthorInput");
+  // const commentAuthorInputElement =
+  //   document.getElementById("commentAuthorInput");
   const commentContentInputElement =
     document.getElementById("commentTextInput");
 
@@ -433,11 +460,12 @@ function addCommentFormEventListeners() {
     e.preventDefault();
 
     createComment(
-      commentAuthorInputElement.value.trim(),
+      // commentAuthorInputElement.value.trim(),
+      username,
       commentContentInputElement.value.trim()
     );
 
-    commentAuthorInputElement.value = "";
+    // commentAuthorInputElement.value = "";
     commentContentInputElement.value = "";
   });
 }
@@ -448,10 +476,10 @@ async function createComment(author, content) {
   const commentElement = document.createElement("div");
   commentElement.classList.add("comment");
 
-  const authorElement = document.createElement("p");
-  authorElement.textContent = author;
-  authorElement.classList.add("commentAuthor");
-  commentElement.appendChild(authorElement);
+  // const authorElement = document.createElement("p");
+  // authorElement.textContent = author;
+  // authorElement.classList.add("commentAuthor");
+  // commentElement.appendChild(authorElement);
 
   const contentElement = document.createElement("p");
   contentElement.textContent = content;
@@ -485,8 +513,6 @@ async function renderComments() {
 
   const commentsArray = await getComments(pageNumber ? pageNumber : 0);
 
-  console.log(commentsArray);
-
   commentsArray.forEach((comment) => {
     const commentElement = document.createElement("div");
 
@@ -515,18 +541,18 @@ function createCommentForm() {
 
   commentContainerElement.appendChild(commentFormElement);
 
-  const commentAuthorInputLabelElement = document.createElement("label");
-  commentAuthorInputLabelElement.setAttribute("for", "commentAuthorInput");
-  commentAuthorInputLabelElement.textContent = "Username: ";
+  // const commentAuthorInputLabelElement = document.createElement("label");
+  // commentAuthorInputLabelElement.setAttribute("for", "commentAuthorInput");
+  // commentAuthorInputLabelElement.textContent = "Username: ";
 
-  commentFormElement.appendChild(commentAuthorInputLabelElement);
+  // commentFormElement.appendChild(commentAuthorInputLabelElement);
 
-  const commentAuthorInputElement = document.createElement("input");
-  commentAuthorInputElement.type = "text";
-  commentAuthorInputElement.id = "commentAuthorInput";
-  commentAuthorInputElement.placeholder = "Username";
+  // const commentAuthorInputElement = document.createElement("input");
+  // commentAuthorInputElement.type = "text";
+  // commentAuthorInputElement.id = "commentAuthorInput";
+  // commentAuthorInputElement.placeholder = "Username";
 
-  commentFormElement.appendChild(commentAuthorInputElement);
+  // commentFormElement.appendChild(commentAuthorInputElement);
 
   const commentContentInputLabelElement = document.createElement("label");
   commentContentInputLabelElement.setAttribute("for", "commentTextInput");
@@ -547,6 +573,22 @@ function createCommentForm() {
   commentFormElement.appendChild(commentSubmitElement);
 
   addCommentFormEventListeners();
+}
+
+function addSignInFormEventListeners() {
+  const signInFormElement = document.getElementById("signInForm");
+  const usernameInputElement = document.getElementById("usernameInput");
+  const currentUserDisplayElement =
+    document.getElementById("currentUserDisplay");
+
+  signInFormElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    username = usernameInputElement.value;
+    currentUserDisplayElement.removeAttribute("hidden");
+    currentUserDisplayElement.textContent =
+      "You're signed in as: " + username + "!";
+  });
 }
 
 renderComicPageSite();
