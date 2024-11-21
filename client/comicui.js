@@ -97,6 +97,7 @@ function renderComicPageSite() {
 
   const signInSubmitElement = document.createElement("input");
   signInSubmitElement.type = "submit";
+  signInSubmitElement.value = "Sign In";
 
   signInFormElement.appendChild(signInSubmitElement);
 
@@ -109,6 +110,8 @@ function renderComicPageSite() {
   leftSideElement.appendChild(currentUserDisplayElement);
 
   addSignInFormEventListeners();
+
+  addPageSelect();
 
   // const leftListElement = document.createElement("ul");
   // leftListElement.id = "leftLinkList";
@@ -696,6 +699,42 @@ function addSignInFormEventListeners() {
     currentUserDisplayElement.removeAttribute("hidden");
     currentUserDisplayElement.textContent =
       "You're signed in as: " + username + "!";
+  });
+}
+
+async function addPageSelect() {
+  const leftSideElement = document.getElementById("sideBarLeft");
+
+  const pageSelectFormElement = document.createElement("form");
+  pageSelectFormElement.id = "pageSelectForm";
+
+  leftSideElement.appendChild(pageSelectFormElement);
+
+  const pageSelectElement = document.createElement("select");
+
+  const pagesArray = await getPages();
+
+  for (let i = 0; i < pagesArray.length; i++) {
+    const pageNumberElement = document.createElement("option");
+    pageNumberElement.value = i;
+    pageNumberElement.textContent = i;
+    pageSelectElement.appendChild(pageNumberElement);
+  }
+
+  pageSelectFormElement.appendChild(pageSelectElement);
+
+  const submitPageNumberElement = document.createElement("input");
+  submitPageNumberElement.type = "submit";
+  submitPageNumberElement.value = "Jump To Page";
+
+  pageSelectFormElement.appendChild(submitPageNumberElement);
+
+  pageSelectFormElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const baseUrl = "http://127.0.0.1:5500/";
+
+    window.location.href = baseUrl + "?page=" + pageSelectElement.value;
   });
 }
 

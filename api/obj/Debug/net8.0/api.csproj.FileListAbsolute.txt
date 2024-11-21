@@ -25,14 +25,10 @@ C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\api.pdb
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\ref\api.dll
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comicPage.json
-C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1731790028609.json
-C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1731790037678.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\comicPage.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\comments\1731790067121.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\api.staticwebassets.endpoints.json
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\staticwebassets\msbuild.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732141239682.json
-C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732141250240.json
-C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732141260148.json
-C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732141545740.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732142925565.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732143111154.json
