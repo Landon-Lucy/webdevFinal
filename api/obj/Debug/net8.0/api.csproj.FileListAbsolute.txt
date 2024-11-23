@@ -32,3 +32,10 @@ C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\staticwebassets.build.end
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\staticwebassets\msbuild.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732142925565.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comments\1732143111154.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\comments\1732153910187.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\2\comicPage.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\2\comments\1732154156758.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\2\comments\1732154162511.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\3\comicPage.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\4\comicPage.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\ratings\lulu.json

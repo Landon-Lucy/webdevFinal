@@ -109,11 +109,37 @@ app.MapPut("/pages/{pageNumber}/comments/{commentId}", async (ulong pageNumber, 
 
 app.MapDelete("/pages/{pageNumber}/comments/{commentId}", (ulong pageNumber, ulong commentId) =>
 {
-  var commentFile = Path.Combine(storageRoot, pageNumber.ToString(), "comments", $"{commentId}.json");
-  if (!File.Exists(commentFile))
-    throw new Exception("Comment not found.");
+    var commentFile = Path.Combine(storageRoot, pageNumber.ToString(), "comments", $"{commentId}.json");
+    if (!File.Exists(commentFile))
+        throw new Exception("Comment not found.");
 
-  File.Delete(commentFile);
+    File.Delete(commentFile);
+});
+
+//Ratings
+
+app.MapPost("/pages/{pageNumber}/rating", async (ulong pageNumber, Rating givenRating) =>
+{
+    var ratingsPath = Path.Combine(storageRoot, pageNumber.ToString(), "ratings");
+    Directory.CreateDirectory(ratingsPath);
+
+    var commentFile = Path.Combine(ratingsPath, $"{givenRating.Username}.json");
+    await File.WriteAllTextAsync(commentFile, JsonSerializer.Serialize(givenRating));
+
+    return givenRating;
+});
+
+app.MapGet("/pages/{pageNumber}/rating", async (ulong pageNumber) =>
+{
+    var ratingsPath = Path.Combine(storageRoot, pageNumber.ToString(), "ratings");
+    if (!Directory.Exists(ratingsPath))
+        return [];
+
+    var ratings = Directory.GetFiles(ratingsPath)
+        .Select((file) => File.ReadAllText(file))
+        .Select((rawRating) => JsonSerializer.Deserialize<Rating>(rawRating));
+
+    return ratings;
 });
 
 app.Run();
@@ -123,3 +149,5 @@ public record FileUploadRequestBody(
     string Base64File, string Page
 );
 public record Comment(ulong Id, string Author, string Text);
+
+public record Rating(string Username, short Stars);

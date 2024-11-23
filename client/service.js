@@ -78,6 +78,24 @@ export async function deleteComment(pageNumber, commentId) {
   );
 }
 
+export async function addRating(pageNumber, username, rating) {
+  await fetch(baseUrl + "pages/" + pageNumber + "/rating", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: username,
+      stars: rating,
+    }),
+  });
+}
+
+export async function getRatings(pageNumber)
+{
+  const ratings = await fetch(baseUrl + "pages/" + pageNumber + "/rating");
+  const ratingsData = await ratings.json();
+  return ratingsData;
+}
+
 // export async function editComment(
 //   authorString,
 //   contentString,
