@@ -26,7 +26,6 @@ C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\api.genruntimeconfig.cach
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\ref\api.dll
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\comicPage.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\comicPage.json
-C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\comments\1731790067121.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\api.staticwebassets.endpoints.json
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\lando\webdev\webdevFinal\api\obj\Debug\net8.0\staticwebassets\msbuild.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
@@ -39,3 +38,14 @@ C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\2\comments\173215
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\3\comicPage.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\4\comicPage.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\ratings\lulu.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\ratings\dsadsa.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\ratings\fdsadddddddd.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\0\ratings\Hello.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\ratings\adsf.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\ratings\asdfg.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\1\ratings\dsadsa.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\5\comicPage.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Jessie.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\King.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Queen.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Ryan.json

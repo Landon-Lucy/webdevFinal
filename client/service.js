@@ -89,13 +89,27 @@ export async function addRating(pageNumber, username, rating) {
   });
 }
 
-export async function getRatings(pageNumber)
-{
+export async function getRatings(pageNumber) {
   const ratings = await fetch(baseUrl + "pages/" + pageNumber + "/rating");
   const ratingsData = await ratings.json();
   return ratingsData;
 }
 
+export async function postCharacter(charName) {
+  await fetch(baseUrl + "characters/" + charName, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      charName: charName,
+    }),
+  });
+}
+
+export async function getCharacters() {
+  const characters = await fetch(baseUrl + "characters");
+  const charactersData = await characters.json();
+  return charactersData;
+}
 // export async function editComment(
 //   authorString,
 //   contentString,

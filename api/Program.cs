@@ -123,8 +123,8 @@ app.MapPost("/pages/{pageNumber}/rating", async (ulong pageNumber, Rating givenR
     var ratingsPath = Path.Combine(storageRoot, pageNumber.ToString(), "ratings");
     Directory.CreateDirectory(ratingsPath);
 
-    var commentFile = Path.Combine(ratingsPath, $"{givenRating.Username}.json");
-    await File.WriteAllTextAsync(commentFile, JsonSerializer.Serialize(givenRating));
+    var ratingFile = Path.Combine(ratingsPath, $"{givenRating.Username}.json");
+    await File.WriteAllTextAsync(ratingFile, JsonSerializer.Serialize(givenRating));
 
     return givenRating;
 });
@@ -140,6 +140,32 @@ app.MapGet("/pages/{pageNumber}/rating", async (ulong pageNumber) =>
         .Select((rawRating) => JsonSerializer.Deserialize<Rating>(rawRating));
 
     return ratings;
+});
+
+//characters
+
+app.MapPost("/characters/{charName}", async (string charName) =>
+{
+    var charactersPath = Path.Combine(storageRoot, "characters");
+    Directory.CreateDirectory(charactersPath);
+
+    var characterFile = Path.Combine(charactersPath, $"{charName}.json");
+    await File.WriteAllTextAsync(characterFile, JsonSerializer.Serialize(charName));
+
+    return charName;
+});
+
+app.MapGet("/characters", async () => 
+{
+    var charactersPath = Path.Combine(storageRoot, "characters");
+    if (!Directory.Exists(charactersPath))
+        return [];
+
+    var characters = Directory.GetFiles(charactersPath)
+        .Select((file) => File.ReadAllText(file))
+        .Select((rawCharacter) => JsonSerializer.Deserialize<string>(rawCharacter));
+
+    return characters;
 });
 
 app.Run();
