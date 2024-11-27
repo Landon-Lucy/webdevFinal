@@ -1,4 +1,9 @@
-import { getCharacters, postCharacter } from "./service.js";
+import {
+  getCharacterDescriptions,
+  getCharacters,
+  postCharacter,
+  postCharacterDescription,
+} from "./service.js";
 
 function renderCharacterSite() {
   const bodyElement = document.getElementById("body");
@@ -65,6 +70,24 @@ function renderCharacterSite() {
   mainContainerElement.appendChild(scrollContainerElement);
 
   renderCharacterTable();
+
+  const dropBoxElement = document.createElement("div");
+  dropBoxElement.id = "dropBoxOne";
+  dropBoxElement.addEventListener("dragover", (ev) => {
+    ev.preventDefault();
+  });
+  dropBoxElement.addEventListener("drop", (ev) => {
+    ev.preventDefault();
+    dropBoxElement.textContent = ev.dataTransfer.getData("text");
+    updateDescriptionBox();
+  });
+
+  scrollContainerElement.appendChild(dropBoxElement);
+
+  const descriptionBoxElement = document.createElement("div");
+  descriptionBoxElement.id = "descriptionBox";
+
+  scrollContainerElement.appendChild(descriptionBoxElement);
 }
 
 async function renderCharacterTable() {
@@ -91,6 +114,10 @@ async function renderCharacterTable() {
   charArray.forEach((character) => {
     const charRowElement = document.createElement("tr");
     charRowElement.classList.add("charRow");
+    charRowElement.draggable = "true";
+    charRowElement.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text", e.target.textContent);
+    });
 
     charTableElement.appendChild(charRowElement);
 
@@ -136,6 +163,58 @@ async function renderCharacterTable() {
     scrollContainerElement.replaceChildren();
     renderCharacterSite();
   });
+}
+
+async function updateDescriptionBox() {
+  const dropBoxElement = document.getElementById("dropBoxOne");
+  const characterName = dropBoxElement.textContent;
+
+  const descriptionBoxElement = document.getElementById("descriptionBox");
+
+  const descriptionsArray = await getCharacterDescriptions();
+
+  const correctDescriptionsEntry = descriptionsArray.find((arrayItem) => {
+    if (arrayItem.charName === characterName) {
+      return true;
+    } else return false;
+  });
+
+  descriptionBoxElement.replaceChildren();
+  descriptionBoxElement.textContent = "";
+
+  if (correctDescriptionsEntry === undefined) {
+    const descriptionFormElement = document.createElement("form");
+    descriptionFormElement.id = "descriptionForm";
+
+    descriptionBoxElement.appendChild(descriptionFormElement);
+
+    const descriptionInputElement = document.createElement("input");
+    descriptionInputElement.id = "descriptionFormInput";
+
+    descriptionFormElement.appendChild(descriptionInputElement);
+
+    const descriptionSubmitElement = document.createElement("input");
+    descriptionSubmitElement.type = "submit";
+    descriptionSubmitElement.id = "descriptionSubmitButton";
+    descriptionSubmitElement.value = "Submit Description";
+
+    descriptionFormElement.appendChild(descriptionSubmitElement);
+
+    descriptionFormElement.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      await postCharacterDescription(
+        characterName,
+        descriptionInputElement.value
+      );
+
+      descriptionBoxElement.replaceChildren();
+      descriptionBoxElement.textContent = descriptionInputElement.value;
+    });
+  } else {
+    const correctDescription = correctDescriptionsEntry.charDescription;
+    descriptionBoxElement.textContent = String(correctDescription);
+  }
 }
 
 renderCharacterSite();

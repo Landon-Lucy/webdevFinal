@@ -49,3 +49,6 @@ C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Jessie
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\King.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Queen.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Ryan.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Helmeppo.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Lucy.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Zeke.json

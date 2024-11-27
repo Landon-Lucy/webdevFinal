@@ -110,6 +110,24 @@ export async function getCharacters() {
   const charactersData = await characters.json();
   return charactersData;
 }
+
+export async function getCharacterDescriptions() {
+  const characterDescriptions = await fetch(baseUrl + "characterdescriptions");
+  const characterDescriptionsData = await characterDescriptions.json();
+  return characterDescriptionsData;
+}
+
+export async function postCharacterDescription(charName, charDescription) {
+  await fetch(baseUrl + "characterdescriptions/" + charName, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      charName: charName,
+      charDescription: charDescription,
+    }),
+  });
+}
+
 // export async function editComment(
 //   authorString,
 //   contentString,

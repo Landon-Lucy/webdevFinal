@@ -155,7 +155,7 @@ app.MapPost("/characters/{charName}", async (string charName) =>
     return charName;
 });
 
-app.MapGet("/characters", async () => 
+app.MapGet("/characters", async () =>
 {
     var charactersPath = Path.Combine(storageRoot, "characters");
     if (!Directory.Exists(charactersPath))
@@ -168,6 +168,30 @@ app.MapGet("/characters", async () =>
     return characters;
 });
 
+app.MapGet("/characterdescriptions", async () =>
+{
+    var characterDescriptionsPath = Path.Combine(storageRoot, "characterDescriptions");
+    if (!Directory.Exists(characterDescriptionsPath))
+        return [];
+
+    var characterDescriptions = Directory.GetFiles(characterDescriptionsPath)
+        .Select((file) => File.ReadAllText(file))
+        .Select((rawCharacterDescription) => JsonSerializer.Deserialize<CharacterDescription>(rawCharacterDescription));
+
+    return characterDescriptions;
+});
+
+app.MapPost("/characterdescriptions/{charName}", async (string charName, CharacterDescription givenDescription) =>
+{
+    var characterDescriptionsPath = Path.Combine(storageRoot, "characterDescriptions");
+    Directory.CreateDirectory(characterDescriptionsPath);
+
+    var characterDescriptionFile = Path.Combine(characterDescriptionsPath, $"{givenDescription.CharName}.json");
+    await File.WriteAllTextAsync(characterDescriptionFile, JsonSerializer.Serialize(givenDescription));
+
+    return givenDescription;
+});
+
 app.Run();
 
 
@@ -177,3 +201,4 @@ public record FileUploadRequestBody(
 public record Comment(ulong Id, string Author, string Text);
 
 public record Rating(string Username, short Stars);
+public record CharacterDescription(string CharName, string CharDescription);

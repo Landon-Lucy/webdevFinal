@@ -125,7 +125,7 @@ body {
   align-self: center;
 }
 
-#imageForm{
+#imageForm {
   align-self: center;
   background-color: var(--lighterMainBackground);
   padding-left: 1em;
@@ -191,4 +191,19 @@ body {
 
 #commentTextInput {
   margin-bottom: 0.5em;
+}
+
+/* character page */
+
+#dropBoxOne {
+  height: 5em;
+  width: 9em;
+  background-color: var(--lighterMainBackground);
+  text-align: center;
+}
+
+#descriptionBox {
+  height: 7em;
+  width: 80vw;
+  background-color: var(--lighterMainBackground);
 }
