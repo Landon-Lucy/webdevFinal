@@ -52,3 +52,6 @@ C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Ryan.j
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Helmeppo.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Lucy.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Zeke.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characterDescriptions\Lucy.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characterDescriptions\Queen.json
+C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characterDescriptions\Zeke.json

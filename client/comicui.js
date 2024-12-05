@@ -107,11 +107,12 @@ function renderComicPageSiteUser() {
     const signInSubmitElement = document.createElement("input");
     signInSubmitElement.type = "submit";
     signInSubmitElement.value = "Sign In";
+    signInSubmitElement.id = "signInSubmit";
 
     signInFormElement.appendChild(signInSubmitElement);
 
     const currentUserDisplayElement = document.createElement("article");
-    currentUserDisplayElement.id = "currentUserDisplay";
+    currentUserDisplayElement.id = "currentUserDisplayHidden";
     currentUserDisplayElement.textContent =
       "You're signed in as: " + username + "!";
     currentUserDisplayElement.setAttribute("hidden", "hidden");
@@ -309,6 +310,8 @@ function renderComicPageSiteUser() {
 
     const commentSubmitElement = document.createElement("input");
     commentSubmitElement.type = "submit";
+    commentSubmitElement.value = "Post";
+    commentSubmitElement.id = "commentSubmit";
 
     commentFormElement.appendChild(commentSubmitElement);
 
@@ -516,7 +519,7 @@ async function renderComicPageSiteAuthor() {
 
   comicContainerElement.appendChild(imageFormElement);
 
-  // const ratingsDisplayElement = 
+  // const ratingsDisplayElement =
   await SetUpRatingsDisplay();
 
   // comicContainerElement.appendChild(ratingsDisplayElement);
@@ -921,6 +924,13 @@ function createCommentFilterForm() {
     "commentFormsContainer"
   );
 
+  const commentFilterLabelElement = document.createElement("label");
+  commentFilterLabelElement.id = "commentFilterForm";
+  commentFilterLabelElement.textContent = "Search Comments:";
+  commentFilterLabelElement.setAttribute("for", "commentFilter");
+
+  commentFormsContainerElement.appendChild(commentFilterLabelElement);
+
   const commentFilterFormElement = document.createElement("form");
   commentFilterFormElement.id = "commentFilterForm";
 
@@ -1006,14 +1016,16 @@ function renderFilteredComments(filteredComments) {
 function addSignInFormEventListeners() {
   const signInFormElement = document.getElementById("signInForm");
   const usernameInputElement = document.getElementById("usernameInput");
-  const currentUserDisplayElement =
-    document.getElementById("currentUserDisplay");
+  const currentUserDisplayElement = document.getElementById(
+    "currentUserDisplayHidden"
+  );
 
   signInFormElement.addEventListener("submit", (e) => {
     e.preventDefault();
 
     username = usernameInputElement.value;
     currentUserDisplayElement.removeAttribute("hidden");
+    currentUserDisplayElement.id = "currentUserDisplay";
     currentUserDisplayElement.textContent =
       "You're signed in as: " + username + "!";
 
@@ -1082,6 +1094,7 @@ function SetupRatingForm() {
   const ratingSubmitElement = document.createElement("input");
   ratingSubmitElement.id = "ratingSubmitButton";
   ratingSubmitElement.type = "submit";
+  ratingSubmitElement.value = "Submit";
 
   ratingFormElement.appendChild(ratingSubmitElement);
 
@@ -1127,7 +1140,7 @@ async function SetUpRatingsDisplay() {
 
   console.log(ratingsDisplayElement);
 
-  const comicContainerElement = document.getElementById("comicContainer")
+  const comicContainerElement = document.getElementById("comicContainer");
   comicContainerElement.appendChild(ratingsDisplayElement);
   // return ratingsDisplayElement;
 }

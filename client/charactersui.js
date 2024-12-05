@@ -7,7 +7,8 @@ import {
 
 function renderCharacterSite() {
   const bodyElement = document.getElementById("body");
-
+  bodyElement.replaceChildren();
+  
   const mainContainerElement = document.createElement("section");
   mainContainerElement.id = "fullPageContainer";
   bodyElement.appendChild(mainContainerElement);
@@ -73,6 +74,7 @@ function renderCharacterSite() {
 
   const dropBoxElement = document.createElement("div");
   dropBoxElement.id = "dropBoxOne";
+  dropBoxElement.textContent = "Drop Characters Here"
   dropBoxElement.addEventListener("dragover", (ev) => {
     ev.preventDefault();
   });
