@@ -55,3 +55,12 @@ C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characters\Zeke.j
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characterDescriptions\Lucy.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characterDescriptions\Queen.json
 C:\Users\lando\webdev\webdevFinal\api\bin\Debug\net8.0\storage\characterDescriptions\Zeke.json
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.AssemblyInfoInputs.cache
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.AssemblyInfo.cs
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.csproj.CoreCompileInputs.cache
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.sourcelink.json
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.dll
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\refint\api.dll
+C:\Users\landon.ginn\webdev\webdevFinal\api\obj\Debug\net8.0\api.pdb

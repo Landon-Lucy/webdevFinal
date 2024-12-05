@@ -85,6 +85,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  min-height: 70vh;
 }
 
 #sideBarLeft {
@@ -92,6 +94,8 @@ body {
   flex-direction: column;
   background-color: var(--sideBarBackground);
   width: 15%;
+
+  max-width: 15em;
 
   /* box-shadow: 10px 5px 5px red; */
   filter: drop-shadow(10px -7px 20px var(--sidebarShadows));
@@ -115,11 +119,14 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: var(--textBlack);
   align-self: center;
+
+  max-width:10em;
 }
 
 #signInSubmit {
   width: 50%;
   min-width: 4em;
+  max-width:7em;
   align-self: center;
   margin-top: 0.1em;
   color: var(--textBlack);
@@ -312,6 +319,7 @@ body {
   flex-direction: column;
   width: 15%;
   background-color: var(--sideBarBackground);
+  max-width: 15em;
   filter: drop-shadow(0px -7px 20px var(--sidebarShadows));
 }
 
