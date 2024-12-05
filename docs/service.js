@@ -1,5 +1,5 @@
 // const baseUrl = "http://localhost:5297/";
-const baseUrl = "webcomicfinalproject-0mstgr21.b4a.run/";
+const baseUrl = "https://webcomicfinalproject-0mstgr21.b4a.run/";
 
 
 export const getSomethingFromAPI = async () => {
