@@ -714,7 +714,7 @@ function SetupPageNavigationListeners() {
     e.preventDefault();
     console.log(e);
 
-    const baseUrl = "http://127.0.0.1:5500/";
+    const baseUrl = "https://landon-lucy.github.io/webdevFinal/";
 
     let lastPage = "";
     let previousPage = "";
@@ -1065,7 +1065,7 @@ async function addPageSelect() {
   pageSelectFormElement.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const baseUrl = "http://127.0.0.1:5500/";
+    const baseUrl = "https://landon-lucy.github.io/webdevFinal/";
 
     window.location.href = baseUrl + "?page=" + pageSelectElement.value;
   });
