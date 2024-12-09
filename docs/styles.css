@@ -64,6 +64,8 @@ body {
 
   border-style: none;
   border-radius: 0.8rem;
+
+  transition: 1s;
 }
 
 #navLinkList li a {
@@ -72,6 +74,32 @@ body {
   color: var(--textBlack);
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
+
+  transition: 1s;
+}
+
+#navLinkList li:hover {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--textBlack);
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-bottom: 0.1em;
+
+  border-style: none;
+  border-radius: 0.8rem;
+
+  transition: 1s;
+}
+
+#navLinkList li:hover a {
+  text-decoration: none;
+  align-self: center;
+  color: var(--navButtonBackground);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+
+  transition: 1s;
 }
 
 #scrollableContainer {
@@ -87,6 +115,8 @@ body {
   justify-content: space-between;
 
   min-height: 70vh;
+
+  flex-shrink: 0;
 }
 
 #sideBarLeft {
@@ -120,13 +150,13 @@ body {
   color: var(--textBlack);
   align-self: center;
 
-  max-width:10em;
+  max-width: 10em;
 }
 
 #signInSubmit {
   width: 50%;
   min-width: 4em;
-  max-width:7em;
+  max-width: 7em;
   align-self: center;
   margin-top: 0.1em;
   color: var(--textBlack);
@@ -241,6 +271,8 @@ body {
   align-self: center;
 
   filter: drop-shadow(0px 0px 10px var(--sidebarShadows));
+
+  flex-shrink: 0;
 }
 
 #imageForm {
