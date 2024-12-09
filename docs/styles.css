@@ -496,6 +496,9 @@ body {
   align-self: center;
 
   border-radius: 1em;
+  padding: 0.5em;
+  text-indent: 1em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #charTable {
