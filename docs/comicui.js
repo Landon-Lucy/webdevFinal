@@ -27,7 +27,7 @@ function renderComicPageSiteUser() {
     mainContainerElement.id = "fullPageContainer";
     bodyElement.appendChild(mainContainerElement);
 
-    const navbarContainerElement = document.createElement("header");
+    const navbarContainerElement = document.createElement("nav");
     navbarContainerElement.id = "navbar";
 
     mainContainerElement.appendChild(navbarContainerElement);
