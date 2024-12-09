@@ -235,37 +235,37 @@ function renderComicPageSiteUser() {
 
     rightSideElement.appendChild(rightListElement);
 
-    const rightListItem1Element = document.createElement("li");
-    rightListElement.appendChild(rightListItem1Element);
+    // const rightListItem1Element = document.createElement("li");
+    // rightListElement.appendChild(rightListItem1Element);
 
-    const rightListLink1Element = document.createElement("a");
-    rightListLink1Element.textContent = "1";
-    rightListLink1Element.href = "";
-    rightListItem1Element.appendChild(rightListLink1Element);
+    // const rightListLink1Element = document.createElement("a");
+    // rightListLink1Element.textContent = "1";
+    // rightListLink1Element.href = "";
+    // rightListItem1Element.appendChild(rightListLink1Element);
 
-    const rightListItem2Element = document.createElement("li");
-    rightListElement.appendChild(rightListItem2Element);
+    // const rightListItem2Element = document.createElement("li");
+    // rightListElement.appendChild(rightListItem2Element);
 
-    const rightListLink2Element = document.createElement("a");
-    rightListLink2Element.textContent = "2";
-    rightListLink2Element.href = "";
-    rightListItem2Element.appendChild(rightListLink2Element);
+    // const rightListLink2Element = document.createElement("a");
+    // rightListLink2Element.textContent = "2";
+    // rightListLink2Element.href = "";
+    // rightListItem2Element.appendChild(rightListLink2Element);
 
-    const rightListItem3Element = document.createElement("li");
-    rightListElement.appendChild(rightListItem3Element);
+    // const rightListItem3Element = document.createElement("li");
+    // rightListElement.appendChild(rightListItem3Element);
 
-    const rightListLink3Element = document.createElement("a");
-    rightListLink3Element.textContent = "3";
-    rightListLink3Element.href = "";
-    rightListItem3Element.appendChild(rightListLink3Element);
+    // const rightListLink3Element = document.createElement("a");
+    // rightListLink3Element.textContent = "3";
+    // rightListLink3Element.href = "";
+    // rightListItem3Element.appendChild(rightListLink3Element);
 
-    const rightListItem4Element = document.createElement("li");
-    rightListElement.appendChild(rightListItem4Element);
+    // const rightListItem4Element = document.createElement("li");
+    // rightListElement.appendChild(rightListItem4Element);
 
-    const rightListLink4Element = document.createElement("a");
-    rightListLink4Element.textContent = "4";
-    rightListLink4Element.href = "";
-    rightListItem4Element.appendChild(rightListLink4Element);
+    // const rightListLink4Element = document.createElement("a");
+    // rightListLink4Element.textContent = "4";
+    // rightListLink4Element.href = "";
+    // rightListItem4Element.appendChild(rightListLink4Element);
 
     const commentFormsContainerElement = document.createElement("div");
     commentFormsContainerElement.id = "commentFormsContainer";
