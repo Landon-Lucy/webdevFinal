@@ -39,7 +39,7 @@ function renderComicPageSiteUser() {
 
     const logoImageElement = document.createElement("img");
     logoImageElement.id = "logo";
-    logoImageElement.src = "./logoplaceholder.png";
+    logoImageElement.src = "./LOGO__-removebg-preview.png";
     logoImageElement.alt = "Site Logo";
 
     logoContainerElement.appendChild(logoImageElement);
@@ -344,7 +344,7 @@ async function renderComicPageSiteAuthor() {
 
   const logoImageElement = document.createElement("img");
   logoImageElement.id = "logo";
-  logoImageElement.src = "./logoplaceholder.png";
+  logoImageElement.src = "./LOGO__-removebg-preview.png";
   logoImageElement.alt = "Site Logo";
 
   logoContainerElement.appendChild(logoImageElement);
