@@ -411,6 +411,7 @@ async function renderComicPageSiteAuthor() {
 
   const signInSubmitElement = document.createElement("input");
   signInSubmitElement.type = "submit";
+  signInSubmitElement.id = "signInSubmit";
   signInSubmitElement.value = "Sign In";
 
   signInFormElement.appendChild(signInSubmitElement);
